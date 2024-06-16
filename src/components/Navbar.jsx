@@ -1,6 +1,7 @@
 import { Navbar, NavbarBrand, NavbarContent, Link } from "@nextui-org/react";
 import React from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Button } from "@nextui-org/react";
 
 export default function () {
 
@@ -31,15 +32,15 @@ export default function () {
       <NavbarContent justify="end">
 
         {location.pathname === "/reserva" &&
-          <Link href="/home" className={`text-blue-500`}>Home</Link>
+          <Button type="submit" color="primary" className="h-full align-center text-blue-500 bg-transparent" onClick={() => navigate("/home")}>Início</Button>
         }
 
         {location.pathname === "/home" &&
-          <Link href="/reserva" className={`text-blue-500`}>Reservar</Link>
+          <Button type="submit" className="h-full align-center text-blue-500 bg-transparent" onClick={() => navigate("/reserva")}>Reservar</Button>
         }
 
         {location.pathname === "/" &&
-          <Link href="/reserva" className={`text-blue-500`}>Reservar</Link>
+          <Button type="submit" className="h-full align-center text-blue-500 bg-transparent" onClick={() => navigate("/reserva")}>Reservar</Button>
         }
 
       </NavbarContent>
