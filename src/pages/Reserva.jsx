@@ -3,6 +3,7 @@ import { useForm } from "@formspree/react";
 import { useNavigate } from "react-router-dom";
 import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Button, Input, RadioGroup, Radio } from "@nextui-org/react";
 import ScrollToTop from "../components/ScrollTop";
+import InputMask from 'react-input-mask';
 
 export default function Reserva() {
     const navigate = useNavigate();
@@ -14,7 +15,7 @@ export default function Reserva() {
     const [email, setEmail] = useState('');
     const [celular, setCelular] = useState('');
 
-    const [state, handleSubmit] = useForm("xnqeelbd");
+    const [state, handleSubmit] = useForm("meqyyvld");
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -89,9 +90,21 @@ export default function Reserva() {
                         <Input name="Nome completo" type="text" variant="underlined" label="Nome completo" value={username} onChange={(e) => setUsername(e.target.value)} />
                         <Input name="Data de Nascimento" type="date" variant="underlined" label="Data de nascimento" value={data_nascimento} onChange={(e) => setData_nascimento(e.target.value)} />
                         <Input name="Endereço completo" type="text" variant="underlined" label="Endereço completo" value={endereco} onChange={(e) => setEndereco(e.target.value)} />
-                        <Input name="RG" type="text" variant="underlined" label="RG" value={rg} onChange={(e) => setRg(e.target.value)} />
+                        <InputMask
+                            mask="99.999.999-9"
+                            value={rg}
+                            onChange={(e) => setRg(e.target.value)}
+                        >
+                            {(inputProps) => <Input {...inputProps} name="RG" type="text" variant="underlined" label="RG" />}
+                        </InputMask>
                         <Input name="Email" type="email" variant="underlined" label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                        <Input name="Celular" type="tel" variant="underlined" label="Celular" value={celular} onChange={(e) => setCelular(e.target.value)} />
+                        <InputMask
+                            mask="(99) 99999-9999"
+                            value={celular}
+                            onChange={(e) => setCelular(e.target.value)}
+                        >
+                            {(inputProps) => <Input {...inputProps} name="Celular" type="tel" variant="underlined" label="Celular" />}
+                        </InputMask>
                         <RadioGroup
                             label="Policial ou Médico?"
                             orientation="horizontal"
