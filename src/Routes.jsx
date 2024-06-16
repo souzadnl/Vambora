@@ -7,13 +7,11 @@ import Reserva from "./pages/Reserva";
 
 const AppRoutes = () => {
     return (
-
         <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/home" element={<Home />} />
             <Route path="/reserva" element={<Reserva />} />
         </Routes>
-
     );
 };
 
