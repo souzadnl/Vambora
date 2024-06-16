@@ -38,6 +38,10 @@ export default function () {
           <Link href="/reserva" className={`text-blue-500`}>Reservar</Link>
         }
 
+        {location.pathname === "" &&
+          <Link href="/reserva" className={`text-blue-500`}>Reservar</Link>
+        }
+
       </NavbarContent>
 
     </Navbar>
