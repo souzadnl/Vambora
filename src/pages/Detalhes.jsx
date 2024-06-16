@@ -91,7 +91,7 @@ export default function Detalhes() {
                             <Tab key="inclusoes" title="O pacote inclui">
                                 <Card className="mt-6">
                                     <CardBody>
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div className="">
                                             {/* Parte esquerda: texto */}
                                             <div className="text-gray-700">
                                                 <h3 className="text-lg font-semibold mb-4">O PACOTE INCLUI</h3>
@@ -109,11 +109,6 @@ export default function Detalhes() {
                                                     Não é só uma excursão, é experiência!
                                                 </p>
                                             </div>
-
-                                            {/* Parte direita: imagem */}
-                                            <div className="hidden md:block">
-                                                <img className="object-cover object-center rounded-lg shadow-md" src="/hotel.jpg" alt="Hotel Nacional Inn" />
-                                            </div>
                                         </div>
                                     </CardBody>
                                 </Card>
@@ -121,7 +116,7 @@ export default function Detalhes() {
                             <Tab key="transporte" title="Transporte">
                                 <Card className="mt-6">
                                     <CardBody>
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div className="">
                                             {/* Parte esquerda: texto */}
                                             <div className="text-gray-700">
                                                 <h3 className="text-lg font-semibold mb-4">TRANSPORTE</h3>
@@ -136,11 +131,6 @@ export default function Detalhes() {
                                                 </p>
 
                                                 <img className="mt-5" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTkUr8ZXFWMU3IJeJRbxURb9TKQ4Xb0UuyzL5OQxR0OerW1hWTH" alt="" srcset="" />
-                                            </div>
-
-                                            {/* Parte direita: imagem */}
-                                            <div className="hidden md:block">
-                                                <img className="object-cover object-center rounded-lg shadow-md" src="/van.jpg" alt="Van Mercedes-Benz" />
                                             </div>
                                         </div>
                                     </CardBody>
