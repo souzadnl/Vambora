@@ -25,7 +25,7 @@ export default function () {
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
         <NavbarBrand>
-          <Link href="/home" className="text-inherit">Vambora</Link>
+          <p className="text-inherit">Vambora</p>
         </NavbarBrand>
       </NavbarContent>
 
