@@ -10,37 +10,62 @@ export default function () {
   return (
     <Navbar disableAnimation isBordered className="fixed h-16 border-none">
       <NavbarContent className="sm:hidden pr-3" justify="center">
-        <NavbarBrand>
+        <NavbarBrand onClick={() => navigate("/home")}>
           <p className="text-inherit">Vambora</p>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent className="hidden sm:flex gap-4" justify="center">
-        <NavbarBrand>
+        <NavbarBrand onClick={() => navigate("/home")}>
           <p className="text-inherit">Vambora</p>
         </NavbarBrand>
       </NavbarContent>
 
       <NavbarContent justify="end">
         {location.pathname === "/reserva" && (
-          <Button
-            type="button"
-            color="primary"
-            className="h-full align-center text-blue-500 bg-transparent"
-            onClick={() => navigate("/home")}
-          >
-            Início
-          </Button>
+          <>
+            <Button
+              type="button"
+              className="h-full align-center text-blue-500 bg-transparent"
+              onClick={() => navigate("/detalhes")}
+            >
+              Detalhes
+            </Button>
+          </>
         )}
 
         {(location.pathname === "/home" || location.pathname === "/") && (
-          <Button
-            type="button"
-            className="h-full align-center text-blue-500 bg-transparent"
-            onClick={() => navigate("/reserva")}
-          >
-            Reservar
-          </Button>
+          <>
+            <Button
+              type="button"
+              className="h-full align-center text-blue-500 bg-transparent"
+              onClick={() => navigate("/detalhes")}
+            >
+              Detalhes
+            </Button>
+
+            <Button
+              type="button"
+              className="align-center text-white primary bg-primary"
+              onClick={() => navigate("/reserva")}
+            >
+              Reservar
+            </Button>
+          </>
+
+        )}
+
+        {(location.pathname === "/detalhes") && (
+          <>
+            <Button
+              type="button"
+              className="align-center text-white primary bg-primary"
+              onClick={() => navigate("/reserva")}
+            >
+              Reservar
+            </Button>
+          </>
+
         )}
       </NavbarContent>
     </Navbar>

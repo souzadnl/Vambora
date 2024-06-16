@@ -127,7 +127,7 @@ export default function Reserva() {
                     <div className="flex justify-center m-auto mt-5 -mb-5">
                         <span className="text-gray-500">Preencha os campos abaixo!</span>
                     </div>
-
+                    
                     <div className="m-auto grid gap-12 py-12">
                         <Input required={true} isInvalid={usernameErro} errorMessage="Preencha seu nome" name="Nome completo" type="text" variant="underlined" label="Nome completo" value={username} onChange={(e) => {setUsername(e.target.value); setUsernameErro(false);}} />
                         <Input required={true} isInvalid={data_nascimentoErro} errorMessage="Preencha sua data de nascimento" name="Data de Nascimento" type="date" variant="underlined" label="Data de nascimento" value={data_nascimento} onChange={(e) => {setData_nascimento(e.target.value); setData_nascimentoErro(false);}} />
