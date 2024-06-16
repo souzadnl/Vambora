@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import Footer from "../components/Footer"
 import ScrollToTop from "../components/ScrollTop";
 import Navbar from "../components/Navbar";
+import imagem from "../assets/imagemVamboraCard.png"
 
 import { Card, CardHeader, CardFooter, Image, Button, Tabs, Tab, CardBody, Divider } from "@nextui-org/react";
 
@@ -159,6 +160,35 @@ export default function Home() {
                 </div>
 
                 <div className="sm:flex items-center justify-center mt-24">
+                    <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-7 mb-10 sm:mx-5">
+                        <CardHeader className="absolute z-10 top-1 flex-col items-start">
+                            <p className="text-tiny text-white/70 uppercase font-bold">Conheça a</p>
+                            <h4 className="text-white font-medium text-2xl">VAMBORA EXCURSÕES!</h4>
+                        </CardHeader>
+                        <Image
+                            removeWrapper
+                            alt="Relaxing app background"
+                            className="z-0 w-full h-full object-cover brightness-[0.75]"
+                            src={imagem}
+                        />
+                        <CardFooter className="absolute bg-black/40 bottom-0 z-10 border-t-1 border-default-600 dark:border-default-100">
+                            <div className="flex flex-grow gap-2 items-center">
+                                <Image
+                                    alt="Breathing app icon"
+                                    className="rounded-full w-10 h-10 bg-black"
+                                    src="https://img.freepik.com/vetores-gratis/icone-de-midia-social-do-vetor-instagram-7-de-junho-de-2021-banguecoque-tailandia_53876-136728.jpg?size=338&ext=jpg&ga=GA1.1.1141335507.1718323200&semt=ais_user"
+                                />
+                                <div className="flex flex-col">
+                                    <p className="text-regular text-left text-white">Instagram</p>
+                                    <p className="text-tiny text-left text-white">Conheça mais sobre a Vambora!</p>
+                                </div>
+                            </div>
+
+                            <a href="https://www.instagram.com/vambora_excursoes/">
+                                <Button radius="full" className="bg-white" size="sm">Conhecer</Button>
+                            </a>
+                        </CardFooter>
+                    </Card>
                     <Card isFooterBlurred className="w-full h-[300px] col-span-12 sm:col-span-7 mb-10 sm:mx-5">
                         <CardHeader className="absolute z-10 top-1 flex-col items-start">
                             <p className="text-tiny text-white/70 uppercase font-bold">Conheça o</p>
