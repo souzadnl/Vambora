@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useForm } from "@formspree/react";
 import { useNavigate } from "react-router-dom";
-import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Button, Input, RadioGroup, Radio } from "@nextui-org/react";
+import { Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure, Button, Input, RadioGroup, Radio, user } from "@nextui-org/react";
 import ScrollToTop from "../components/ScrollTop";
 import InputMask from 'react-input-mask';
+import Navbar from "../components/Navbar";
 
 export default function Reserva() {
     const navigate = useNavigate();
@@ -14,6 +15,46 @@ export default function Reserva() {
     const [rg, setRg] = useState('');
     const [email, setEmail] = useState('');
     const [celular, setCelular] = useState('');
+    const [policialmedico, setPolicialMedico] = useState('');
+
+    const [usernameErro, setUsernameErro] = useState(false);
+    const [enderecoErro, setEnderecoErro] = useState(false);
+    const [data_nascimentoErro, setData_nascimentoErro] = useState(false);
+    const [rgErro, setRgErro] = useState(false);
+    const [emailErro, setEmailErro] = useState(false);
+    const [celularErro, setCelularErro] = useState(false);
+    const [policialmedicoErro, setPolicialMedicoErro] = useState(false);
+
+    function verificar() {
+        setUsernameErro(false);
+        if (username === '') {
+            setUsernameErro(true);
+        }
+        setEnderecoErro(false);
+        if (endereco === '') {
+            setEnderecoErro(true);
+        }
+        setData_nascimentoErro(false);
+        if (data_nascimento === '') {
+            setData_nascimentoErro(true);
+        }
+        setRgErro(false);
+        if (rg === '') {
+            setRgErro(true);
+        }
+        setEmailErro(false);
+        if (email === '') {
+            setEmailErro(true);
+        }
+        setCelularErro(false);
+        if (celular === '') {
+            setCelularErro(true);
+        }
+        setPolicialMedicoErro(false);
+        if (policialmedico === '') {
+            setPolicialMedicoErro(true);
+        }
+    }
 
     const [state, handleSubmit] = useForm("meqyyvld");
 
@@ -30,6 +71,7 @@ export default function Reserva() {
 
     return (
         <>
+            <Navbar />
             <ScrollToTop />
             <Modal
                 backdrop="opaque"
@@ -66,7 +108,7 @@ export default function Reserva() {
                                 </p>
                             </ModalBody>
                             <ModalFooter>
-                                <Button color="primary" onPress={handleModalClose}>
+                                <Button className="bg-green-500 text-white" onPress={handleModalClose}>
                                     OK
                                 </Button>
                             </ModalFooter>
@@ -87,37 +129,44 @@ export default function Reserva() {
                     </div>
 
                     <div className="m-auto grid gap-12 py-12">
-                        <Input name="Nome completo" type="text" variant="underlined" label="Nome completo" value={username} onChange={(e) => setUsername(e.target.value)} />
-                        <Input name="Data de Nascimento" type="date" variant="underlined" label="Data de nascimento" value={data_nascimento} onChange={(e) => setData_nascimento(e.target.value)} />
-                        <Input name="Endereço completo" type="text" variant="underlined" label="Endereço completo" value={endereco} onChange={(e) => setEndereco(e.target.value)} />
+                        <Input required={true} isInvalid={usernameErro} errorMessage="Preencha seu nome" name="Nome completo" type="text" variant="underlined" label="Nome completo" value={username} onChange={(e) => {setUsername(e.target.value); setUsernameErro(false);}} />
+                        <Input required={true} isInvalid={data_nascimentoErro} errorMessage="Preencha sua data de nascimento" name="Data de Nascimento" type="date" variant="underlined" label="Data de nascimento" value={data_nascimento} onChange={(e) => {setData_nascimento(e.target.value); setData_nascimentoErro(false);}} />
+                        <Input required={true} isInvalid={enderecoErro} errorMessage="Preencha seu endereço completo" name="Endereço completo" type="text" variant="underlined" label="Endereço completo" value={endereco} onChange={(e) => {setEndereco(e.target.value); setEnderecoErro(false);}} />
                         <InputMask
                             mask="99.999.999-9"
                             value={rg}
-                            onChange={(e) => setRg(e.target.value)}
+                            onChange={(e) => {setRg(e.target.value); setRgErro(false);}}
+                            required={true}
                         >
-                            {(inputProps) => <Input {...inputProps} name="RG" type="text" variant="underlined" label="RG" />}
+                            {(inputProps) => <Input {...inputProps} isInvalid={rgErro} errorMessage="Preencha seu RG" name="RG" type="text" variant="underlined" label="RG" />}
                         </InputMask>
-                        <Input name="Email" type="email" variant="underlined" label="Email" value={email} onChange={(e) => setEmail(e.target.value)} />
+                        <Input required={true} isInvalid={emailErro} errorMessage="Preencha seu email" name="Email" type="email" variant="underlined" label="Email" value={email} onChange={(e) => {setEmail(e.target.value); setEmailErro(false);}} />
                         <InputMask
                             mask="(99) 99999-9999"
                             value={celular}
-                            onChange={(e) => setCelular(e.target.value)}
+                            onChange={(e) => {setCelular(e.target.value); setCelularErro(false);}}
+                            required={true}
                         >
-                            {(inputProps) => <Input {...inputProps} name="Celular" type="tel" variant="underlined" label="Celular" />}
+                            {(inputProps) => <Input {...inputProps} isInvalid={celularErro} errorMessage="Preencha o número de celular" name="Celular" type="tel" variant="underlined" label="Celular" />}
                         </InputMask>
-                        <RadioGroup
+                        <RadioGroup required={true}
                             label="Policial ou Médico?"
                             orientation="horizontal"
                             className="text-left"
                             name="Policial ou Médico?"
+                            isInvalid={policialmedicoErro}
+                            errorMessage="Escolha uma das opções"
+                            value={policialmedico}
+                            onChange={(e) => {setPolicialMedico(e.target.value); setPolicialMedicoErro(false);}}
                         >
-                            <Radio value="sim" className="mt-5">Sim</Radio>
+                            <Radio value="médico" className="mt-5">Médico</Radio>
+                            <Radio value="policial" className="mt-5">Policial</Radio>
                             <Radio value="não" className="mt-5">Não</Radio>
                         </RadioGroup>
                     </div>
 
                     <div className="m-auto py-5">
-                        <Button type="submit" color="primary" className="w-2/4 m-auto flex justify-center mb-10">Reservar</Button>
+                        <Button type="submit" color="primary" className="w-2/4 m-auto flex justify-center mb-10" onClick={() => verificar()}>Reservar</Button>
                     </div>
                 </form>
             </div>

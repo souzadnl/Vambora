@@ -7,7 +7,6 @@ import Routes from './Routes'; // Supondo que Routes seja um arquivo onde estão
 function App() {
   return (
     <BrowserRouter>
-      <Navbar />
       <Routes />
     </BrowserRouter>
   );

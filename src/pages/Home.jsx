@@ -1,6 +1,7 @@
 import { Link, useNavigate } from "react-router-dom"
 import Footer from "../components/Footer"
 import ScrollToTop from "../components/ScrollTop";
+import Navbar from "../components/Navbar";
 
 import { Card, CardHeader, CardFooter, Image, Button, Tabs, Tab, CardBody, Divider } from "@nextui-org/react";
 
@@ -9,6 +10,7 @@ export default function Home() {
 
     return (
         <>
+            <Navbar />
             <ScrollToTop />
             <div className="justify-center mt-20">
                 <div className="">
@@ -21,7 +23,7 @@ export default function Home() {
                         <span className="text-gray-500">Roteiro de viagem</span>
                     </div>
 
-                    <Tabs aria-label="Options" className="mt-5">
+                    <Tabs aria-label="Options" className="mt-5" color={"primary"}>
                         <Tab key="sexta" title="Sexta">
                             <Card>
                                 <CardBody>
