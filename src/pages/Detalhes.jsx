@@ -71,7 +71,7 @@ export default function Detalhes() {
                                         </p>
 
                                         <span>
-                                            20/06 + 10/07 + 10/08 + 10+09 = 4x de R$ 199,98
+                                            Ato + 10/07 + 10/08 + 10+09 = 4x de R$ 199,98
                                         </span>
 
                                     </div>
